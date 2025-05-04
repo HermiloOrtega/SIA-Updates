@@ -1,65 +1,96 @@
-# 📦 SIA Updates
+# **SIA Updater**
+**Company:** AHMSA  
+**Version:** V1 – May 2025  
+**Type:** Windows Background Application  
+**Category:** System Integration Utility  
 
-## 🧭 Overview
-- Short Summary of the app and what problem it solves. 
-- Include a screnshot of GIF here is possible.
-![Screenshot](./assets/screenshot.png) <!-- Replace with your image path -->
+---
 
-## 💡 Idea & Concept
-- What inspired this? 
-- Who is it for? 
+## 🧭 Overview  
+**SIA Updater** is a Windows application built in **C#** and **SQL Server** using **Visual Studio**, designed to automatically monitor and process updates to the **SIA system** by syncing contract-related data extracted from SAP TXT files.  
 
-## ✨ Features & Functionality
-- Bullet list of main features 
+It runs as a background service, regularly scanning a designated folder for new files and executing the parsing and database update logic without user interaction.
 
-## ⚙️ Tech Stack
-- Language(s), framework, libraries, services, tools, deployment platform. 
+---
 
-## 🏗 Architecture & Design
-- Describe how its structured (e.g., MVC, Monolith, Microservices)
-- Include diagrams if applicable 
+## 💡 Idea & Concept  
+To eliminate manual intervention and ensure that **SIA modules**—including **Warehouse**, **Petty Cash**, and **Material Testing**—always operate with up-to-date contract information, this utility was developed to automate data import from SAP TXT files.
 
-## 🚀 Installation & Setup
-- **Prerequisites:** 
+---
 
-- **Installation Steps:** 
+## ✨ Features & Functionality  
+- **Background Sync Engine:** Monitors folders for new TXT files  
+- **Data Parser:** Reads, validates, and formats SAP TXT data  
+- **Auto Contract Sync:** Creates or updates contract entries in the SIA database  
+- **Silent Execution:** Runs with minimal footprint, invisible to most users  
+- **Execution Log:** Tracks updates, errors, skipped files, and update timestamps  
+- **Always-On Design:** Runs at intervals or continuously depending on configuration  
+- **Multi-threaded Handling:** Optimized for file scanning and DB writes  
 
-- **Deployment Environment:** 
+---
 
-- **Access:** 
+## ⚙️ Tech Stack  
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)  
+![.NET Framework](https://img.shields.io/badge/.NET%20Framework-512BD4?style=for-the-badge&logo=dotnet)  
+![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoftsqlserver)  
+![Visual Studio](https://img.shields.io/badge/IDE-Visual%20Studio-5C2D91?style=for-the-badge&logo=visualstudio)  
 
-> **Note:** 
+---
 
-## 🧑‍💻 Usage
-- How to use the software after setup 
-- CLI Commands, UI Walkthrough, or API Endpoints. 
+## 🏗 Architecture & Design  
+- File system watcher monitors designated directory  
+- TXT parser extracts structured data  
+- SQL commands handle upserts into `Contracts` and related tables  
+- Logs execution to a dedicated table for audits  
+- Configurable schedule via Windows Task Scheduler or app settings  
 
-## 🔍 My Role & Contributions
-- 💼 Full-stack development
-- 🧱 Architecture design
-- 🐞 Bug fixing and optimization
-- 🤝 Collaboration with design/product teams
+---
 
-## 🧗 Challenges & Learnings
-- Major issues you faced and how you overcome them.
-- What you learned from the process.
+## 🚀 Installation & Setup  
+**Prerequisites:**  
+- Windows OS  
+- .NET Framework  
+- SQL Server with access to SIA DB  
+- Folder with SAP TXT export feed  
 
-## 📈 Future Enhancements
-- Features you plan to build. 
-- Known bugs or technical debt. 
+**Setup Steps:**  
+1. Configure folder path and DB credentials  
+2. Schedule using Task Scheduler or set up as a Windows Service  
+3. Monitor logs in the DB or log file
 
-## 🤝 Contributing
-- How other can contribute (if open source)
+---
 
-## 🪪 License
-⚠️ License Notice  
-This repository was originally published under the MIT License.  
-As of April 22, 2025, the license has been changed to **CC BY-NC-ND 4.0**.  
-See the LICENSE file for details.
+## 🧑‍💻 My Role & Contributions  
+- 🛠 Built entire application architecture and scheduling system  
+- 🧪 Designed and tested file parser for SAP TXT format  
+- 🧱 Developed database integration logic and logging tools  
+- 🔄 Integrated updater logic with existing SIA modules  
 
-## 🔗 Additional Resources
-- **Documentation:** 
+---
 
-- **Related Projects:** 
+## 🧗 Challenges & Learnings  
+- Ensuring fault-tolerant file processing without duplicates  
+- Handling malformed or partial SAP exports gracefully  
+- Achieving reliable execution in long-running unattended environments  
+- Providing feedback loops for failed entries  
 
-- **Live Demo Link:** 
+---
+
+## 📈 Future Enhancements  
+- Add real-time alert system for failed updates  
+- UI tool for admins to manually trigger or override updates  
+- Support CSV format as fallback or future standard  
+- Visual reporting of weekly contract update activity  
+
+---
+
+## 🔗 Related Projects  
+- [SIA – Main Platform](../SIA.md)  
+- [SIA – Tests of Materials Module](../SIA-Tests-of-Materials.md)  
+- [SIA – Petty Cash Module](../SIA-Petty-Cash.md)  
+
+---
+
+## 🪪 License  
+**Internal Project – AHMSA**  
+All rights reserved. Not available for public contribution or commercial use.
