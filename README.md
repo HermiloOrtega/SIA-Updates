@@ -1,10 +1,4 @@
 # **SIA Updater**
-**Company:** AHMSA  
-**Version:** V1 – May 2025  
-**Type:** Windows Background Application  
-**Category:** System Integration Utility  
-
----
 
 ## 🧭 Overview  
 **SIA Updater** is a Windows application built in **C#** and **SQL Server** using **Visual Studio**, designed to automatically monitor and process updates to the **SIA system** by syncing contract-related data extracted from SAP TXT files.  
